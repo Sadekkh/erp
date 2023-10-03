@@ -127,7 +127,7 @@
 
 
     <div class="row ">
-        <div class="col"><a href="{{ route('vehicletype') }}"><button class="button-78" role="button">الخدمات</button></a></div>
-        <div class="col"><a href="{{ route('vehicle') }}"><button class="button-78" role="button">الحرفيين</button></a></div>
+        <div class="col"><a href="{{ route('services') }}"><button class="button-78" role="button">الخدمات</button></a></div>
+        <div class="col"><a href="{{ route('employee') }}"><button class="button-78" role="button">الحرفيين</button></a></div>
     </div>
 @endsection

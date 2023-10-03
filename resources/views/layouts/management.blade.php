@@ -362,7 +362,7 @@
 
 
             <!-- Content wrapper start -->
-            <div class="content-wrapper" dir="rtl">
+            <div class="content-wrapper" dir="rtl" style="text-align: right !important">
                 @yield('content')
 
             </div>

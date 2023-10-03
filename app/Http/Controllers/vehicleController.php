@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Driver;
+use App\Models\Employee;
+use App\Models\Service;
 use App\Models\Vehicle;
 use App\Models\VehicleType;
 use Illuminate\Http\Request;
@@ -27,6 +29,17 @@ class vehicleController extends Controller
     {
         $driver = Driver::all();
         return view('services.vehicle.driver', compact('driver'));
+    }
+    public function service()
+    {
+        $service = Service::all();
+        return view('services.vehicle.service', compact('service'));
+    }
+    public function employee()
+    {
+        $service = Service::all();
+        $employee = Employee::with('service')->get();
+        return view('services.vehicle.employee', compact('employee', 'service'));
     }
 
     /**
@@ -57,6 +70,18 @@ class vehicleController extends Controller
         Driver::create($request->all());
 
         return redirect()->route('driver')->with('success', 'Product created successfully');
+    }
+    public function servicestore(Request $request)
+    {
+        Service::create($request->all());
+
+        return redirect()->route('services')->with('success', 'Product created successfully');
+    }
+    public function employeestore(Request $request)
+    {
+        Employee::create($request->all());
+
+        return redirect()->route('employee')->with('success', 'Product created successfully');
     }
 
     /**

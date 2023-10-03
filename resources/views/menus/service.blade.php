@@ -129,10 +129,10 @@
     <div class="row ">
         <div class="col"><a href="/vehiclelist"><button class="button-78" role="button">إدارة الشاحنات</button></a></div>
         <div class="col"><a href="/service_employee"><button class="button-78" role="button">الحرفيين والخدمات</button></a></div>
-        <div class="col"><a href="{{ route('stock.stockneed') }}"><button class="button-78" role="button">إحتياجات المخزن</button></a></div>
+        <div class="col"><a href="{{ route('maintenance') }}"><button class="button-78" role="button">تسجيل دخول/خروج</button></a></div>
     </div>
     <div class="row ">
-        <div class="col"><a href="{{ route('stock.stockrequest') }}"><button class="button-78" role="button">إضافة طلب شراء</button></a></div>
+        <div class="col"><a href="{{ route('maintenance.create') }}"><button class="button-78" role="button">الفحص الفني</button></a></div>
         <div class="col"><a href="{{ route('stock.request.List') }}"><button class="button-78" role="button">متابعة طلبات الشراء</button></a></div>
         <div class="col"><a href="{{ route('product') }}"><button class="button-78" role="button">جرد كافة المخزون</button></a></div>
 

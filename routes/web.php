@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\maintenanceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\stockController;
 use App\Http\Controllers\vehicleController;
@@ -83,10 +84,23 @@ Route::post('/stock/destroy/{id}', [stockController::class, 'destroy'])->name('s
 Route::get('/vehicle', [vehicleController::class, 'index'])->name('vehicle');
 Route::get('/vehicletype', [vehicleController::class, 'vehicletypeindex'])->name('vehicletype');
 Route::get('/driver', [vehicleController::class, 'driver'])->name('driver');
+Route::get('/services', [vehicleController::class, 'service'])->name('services');
+Route::get('/employee', [vehicleController::class, 'employee'])->name('employee');
 Route::get('/vehicle/create', [vehicleController::class, 'create'])->name('vehicle.create');
 Route::post('/vehicletype/store', [vehicleController::class, 'vehicletypestore'])->name('vehicletype.store');
 Route::post('/vehicle/store', [vehicleController::class, 'store'])->name('vehicle.store');
 Route::post('/driver/store', [vehicleController::class, 'driverstore'])->name('driver.store');
+Route::post('/services/store', [vehicleController::class, 'servicestore'])->name('service.store');
+Route::post('/employee/store', [vehicleController::class, 'employeestore'])->name('employee.store');
 Route::get('/vehicle/edit/{id}', [vehicleController::class, 'edit'])->name('vehicle.edit');
 Route::get('/vehicle/update/{id}', [vehicleController::class, 'update'])->name('vehicle.update');
 Route::post('/vehicle/destroy/{id}', [vehicleController::class, 'destroy'])->name('vehicle.destroy');
+
+
+Route::get('/maintenance', [maintenanceController::class, 'index'])->name('maintenance');
+Route::get('/maintenance/create', [maintenanceController::class, 'create'])->name('maintenance.create');
+Route::post('/maintenance/store', [maintenanceController::class, 'store'])->name('maintenance.store');
+Route::get('/maintenance/edit/{id}', [maintenanceController::class, 'edit'])->name('maintenance.edit');
+Route::get('/getemployee/{id}', [maintenanceController::class, 'getemployee']);
+Route::post('/maintenance/update/{id}', [maintenanceController::class, 'update'])->name('maintenance.update');
+Route::post('/maintenance/destroy/{id}', [maintenanceController::class, 'destroy'])->name('maintenance.destroy');

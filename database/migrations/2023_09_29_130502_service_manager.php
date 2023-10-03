@@ -52,7 +52,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone');
-            $table->text('signature')->nullable();
+            $table->text('cin');
 
             $table->unsignedBigInteger('service_id');
             $table->timestamps();
