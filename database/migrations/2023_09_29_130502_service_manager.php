@@ -51,7 +51,7 @@ return new class extends Migration
         });
         Schema::create('garage', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('number');
             $table->string('name_ar');
             $table->string('name_en');
             $table->string('address_ar');
@@ -107,7 +107,8 @@ return new class extends Migration
         });
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name_ar');
+            $table->string('name_en');
             $table->timestamps();
         });
 
@@ -135,11 +136,33 @@ return new class extends Migration
             $table->text('address_en')->nullable();
             $table->timestamps();
         });
+        Schema::create(
+            'request_items',
+            function (Blueprint $table) {
+                $table->id();
+                $table->unsignedBigInteger('garage_id');
+                $table->unsignedBigInteger('product_id');
+                $table->unsignedBigInteger('supplier_id');
+                $table->integer('quantity_requested');
+                $table->integer('quantity_given');
+                $table->enum('state', ['pending', 'confirmed', 'cancelled', 'done'])->default('pending');
+
+                $table->enum('manager_decision', ['pending', 'accepted', 'rejected'])->default('pending');
+                $table->enum('accounts_decision', ['pending', 'accepted', 'rejected'])->default('pending');
+
+                $table->timestamps();
+
+                $table->foreign('garage_id')->references('id')->on('garage')->onDelete('cascade');
+                $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+                $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
+            }
+        );
         Schema::create('stock', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('garage_id');
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('supplier_id');
+            $table->unsignedBigInteger('request_id');
             $table->decimal('price', 10, 2);
             $table->decimal('tax', 10, 2);
             $table->integer('stocked_quantity')->default(0);
@@ -155,35 +178,12 @@ return new class extends Migration
             $table->foreign('garage_id')->references('id')->on('garage')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
+            $table->foreign('request_id')->references('id')->on('request_items');
         });
 
 
 
-        Schema::create('request_items',
-            function (Blueprint $table) {
-                $table->id();
-                $table->unsignedBigInteger('garage_id');
-                $table->unsignedBigInteger('product_id');
-                $table->unsignedBigInteger('supplier_id');
-                $table->integer('quantity_requested');
-                $table->enum('state', ['pending', 'confirmed', 'cancelled', 'done'])->default('pending');
 
-                $table->unsignedBigInteger('manager_id')->nullable();
-                $table->unsignedBigInteger('accounts_id')->nullable();
-
-                $table->enum('manager_decision', ['pending', 'accepted', 'rejected'])->default('pending');
-                $table->enum('accounts_decision', ['pending', 'accepted', 'rejected'])->default('pending');
-
-                $table->timestamps();
-
-                $table->foreign('garage_id')->references('id')->on('garage')->onDelete('cascade');
-                $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-                $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
-
-                $table->foreign('manager_id')->references('id')->on('users');
-                $table->foreign('accounts_id')->references('id')->on('users');
-            }
-        );
 
 
         Schema::create('stock_transactions', function (Blueprint $table) {
@@ -204,23 +204,12 @@ return new class extends Migration
             $table->foreign('stock_employee_id')->references('id')->on('employees'); // Changed 'users' to 'employees'
             $table->foreign('worker_id')->references('id')->on('employees');
         });
-
         Schema::create('media', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('vehicle_id')->nullable();
-            $table->unsignedBigInteger('product_id')->nullable();
-            $table->string('filename');
-            // Add other media information fields as needed
-            $table->timestamps();
+            $table->string('file_name');
 
-            $table->foreign('vehicle_id')->references('id')->on('vehicles')->onDelete('cascade');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-        });
-        Schema::create('settings', function (Blueprint $table) {
-            $table->id();
-
-            $table->string('key');
-            $table->string('value');
+            $table->unsignedBigInteger('entity_id');
+            $table->string('entity_type');
             $table->timestamps();
         });
     }

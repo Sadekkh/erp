@@ -4,19 +4,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
+
+
 
 class Product extends Model
 {
-    protected $fillable = ['product_name', 'description', 'category_id', 'brand_id'];
+    use LogsActivity;
+
+    protected $fillable = ['product_name_ar', 'product_name_en', 'description_ar', 'description_en', 'price', 'tax', 'category_id'];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
-    }
-
-    public function brand()
-    {
-        return $this->belongsTo(Brands::class);
     }
 
     public function stock()
@@ -40,5 +41,17 @@ class Product extends Model
     public function stockTransactions()
     {
         return $this->hasMany(StockTransaction::class);
+    }
+    public function media()
+    {
+        return $this->hasMany(Media::class, 'entity_id')->where('entity_type', 'product');
+    }
+
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->useLogName('Product') // Corrected method name for log name
+            ->logAll(); // Log all attributes when changes occur
     }
 }

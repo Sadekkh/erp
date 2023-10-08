@@ -82,7 +82,7 @@ return [
     | to any of the locales which will be supported by the application.
     |
      */
-
+    'locales' => ['en', 'ar'],
     'locale' => 'en',
 
     /*

@@ -3,13 +3,32 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class Media extends Model
 {
-    protected $fillable = ['vehicle_id', 'filename'];
+    use LogsActivity;
 
+    protected $fillable = [
+        'file_name',
+
+        'entity_id',
+        'entity_type',
+    ];
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
     public function vehicle()
     {
-        return $this->belongsTo(Vehicle::class);
+        return $this->belongsTo(vehicle::class);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->useLogName('Garage') // Corrected method name for log name
+            ->logAll(); // Log all attributes when changes occur
     }
 }

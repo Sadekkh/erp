@@ -40,9 +40,20 @@
 @endsection
 
 @section('content')
+    <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
+
+
+        <a class="ml-1 underline ml-2 mr-2" href="{{ route('change_locale', 'ar') }}">
+            <span>arabic</span>
+        </a>
+        <a class="ml-1 underline ml-2 mr-2" href="{{ route('change_locale', 'en') }}">
+            <span>english</span>
+        </a>
+
+    </div>
     <!-- HTML !-->
     <div class="row" style="height: 15rem">
-        <div class="col"><a href="/stocks"><button class="button-63" role="button">إدارة المخزن</button></a></div>
+        <div class="col"><a href="/stocks"><button class="button-63" role="button">{{ __('messages.garage_manager') }}</button></a></div>
         <div class="col"><a href="/service"><button class="button-63" role="button">إدارة المستودع</button></a>
         </div>
     </div>

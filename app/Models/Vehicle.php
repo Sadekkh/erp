@@ -3,10 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Vehicle extends Model
 {
-    protected $fillable = ['name', 'model', 'year', 'number_wheels', 'oil_change', 'vehicle_type_id', 'vin', 'mileage'];
+    use LogsActivity;
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->useLogName('Garage') // Corrected method name for log name
+            ->logAll(); // Log all attributes when changes occur
+    }
+    protected $fillable = ['model', 'year', 'number_wheels', 'oil_change', 'vehicle_type_id', 'vin', 'mileage'];
 
     public function vehicleType()
     {
@@ -20,6 +29,6 @@ class Vehicle extends Model
 
     public function media()
     {
-        return $this->hasMany(Media::class);
+        return $this->morphMany(Media::class, 'entity');
     }
 }

@@ -1,0 +1,151 @@
+@extends('layouts.management')
+@section('styles')
+    <!-- Data Tables -->
+
+    <link rel="stylesheet" href="{{ asset('css/bs-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('gallery/gallery.css') }}">
+@endsection
+
+@section('content')
+    <form action="{{ route('stock.store') }}" method="post">
+        @csrf
+
+        <input type="number" name="request_id" value="{{ $data->id }}" hidden>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">{{ __('garage') }}</label>
+                        <select class="form-control selectpicker" name="garage_id">
+                            @foreach ($garage as $d)
+                                <option value="{{ $d->id }}" @if ($data->garage_id == $d->id) selected @endif>{{ $d->{'name' . localePrefix()} }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">{{ __('product') }}</label>
+                        <select class="form-control selectpicker" name="product_id">
+                            @foreach ($product as $d)
+                                <option value="{{ $d->id }}" @if ($data->product_id == $d->id) selected @endif>{{ $d->{'product_name' . localePrefix()} }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">{{ __('supplier') }}</label>
+                        <select class="form-control selectpicker" name="supplier_id" data-live-search="true">
+                            @foreach ($supplier as $d)
+                                <option data-tokens="{{ $d->{'supplier_name' . localePrefix()} }}" value="{{ $d->id }}" @if ($data->id == $d->id) selected @endif>{{ $d->{'supplier_name' . localePrefix()} }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">{{ __('quantity_requested') }}</label>
+                        <input type="number" disabled class="form-control" id="actualNumber" value="{{ $data->quantity_requested }}" min="0" max="{{ $data->quantity_requested }}">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">{{ __('quantity_given') }}</label>
+                        <input type="number" class="form-control" id="editedNumber" name="stocked_quantity" value="{{ $data->quantity_requested }}">
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">{{ __('price') }}</label>
+                        <input type="number" class="form-control" name="price" value="{{ $data->price }}">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">{{ __('serial_number') }}</label>
+                        <input type="text" class="form-control" name="serial_num" value="{{ $data->serial_num }}">
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">{{ __('located_row') }}</label>
+                        <input type="number" class="form-control" name="rows">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">{{ __('located_column') }}</label>
+                        <input type="text" class="form-control" name="columns">
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">{{ __('purchase_date') }}</label>
+                        <input type="date" class="form-control" name="purchase_date">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">{{ __('expiry_date') }}</label>
+                        <input type="date" class="form-control" name="expiry_date">
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">{{ __('reference') }}</label>
+                        <input type="text" class="form-control" name="reference">
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-success">{{ __('save') }}</button>
+
+            </div>
+        </div>
+    </form>
+@endsection
+
+@section('script')
+    <script src="{{ asset('js/bs-select.min.js') }}"></script>
+
+    <script>
+        let actual = $("#actualNumber").val();
+        $(function() {
+            $("#editedNumber").keydown(function() {
+                // Save old value.
+                if (!$(this).val() || (parseInt($(this).val()) <= actual && parseInt($(this).val()) >= 0))
+                    $(this).data("old", $(this).val());
+            });
+            $("#editedNumber").keyup(function() {
+                // Check correct, else revert back to old value.
+                if (!$(this).val() || (parseInt($(this).val()) <= actual && parseInt($(this).val()) >= 0))
+                ;
+                else
+                    $(this).val($(this).data("old"));
+            });
+        });
+    </script>
+@endsection
