@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\models\Category;
+use App\models\Categ;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -10,7 +10,7 @@ class CategoriesController extends Controller
     // Display a listing of the category.
     public function index()
     {
-        $data = Category::all();
+        $data = Categ::all();
         return view('category.index', compact('data'));
     }
 
@@ -23,7 +23,7 @@ class CategoriesController extends Controller
     // Store a newly created garage in the database.
     public function store(Request $request)
     {
-        $data = new Category([
+        $data = new Categ([
 
             'name_ar' => $request->input('name_ar'),
             'name_en' => $request->input('name_en'),
@@ -45,7 +45,7 @@ class CategoriesController extends Controller
     // Show the form for editing the specified garage.
     public function edit($id)
     {
-        $data = Category::findOrFail($id);
+        $data = Categ::findOrFail($id);
 
         return response()->json($data);
     }
@@ -54,7 +54,7 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->all();
-        $data = Category::findOrFail($id);
+        $data = Categ::findOrFail($id);
 
         $data->update($validatedData);
 
@@ -64,7 +64,7 @@ class CategoriesController extends Controller
     // Remove the specified garage from the database.
     public function destroy($id)
     {
-        $data = Category::findOrfail($id);
+        $data = Categ::findOrfail($id);
         $data->delete();
 
         return redirect(route('category.index'))->with('success', 'deleted successfully.');

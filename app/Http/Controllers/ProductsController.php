@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\models\Category;
+use App\Models\Categ;
 use App\Models\Garage;
 use App\Models\Media;
 use App\Models\Product;
@@ -16,7 +16,7 @@ class ProductsController extends Controller
     // Display a listing of the products.
     public function index()
     {
-        $category = Category::all();
+        $category = Categ::all();
         $data = Product::with('media')->get();
         return view('products.index', compact('data', 'category'));
     }
@@ -71,7 +71,7 @@ class ProductsController extends Controller
     // Show the form for editing the specified garage.
     public function edit($id)
     {
-        $category = Category::all();
+        $category = Categ::all();
 
         $data = Product::findOrFail($id);
         $images = Media::where('entity_id', $id)->where('entity_type', 'product')->get();
