@@ -124,7 +124,7 @@ class ProductsController extends Controller
             $product = Product::findOrFail($id);
 
             // Generate a QR code with product information
-            $response = QrCode::size(200)->generate("Product_id: {$product->id}, name: {$product->product_name_en}");
+            $response = QrCode::size(200)->generate("Product_id: {$product->id}");
             return $response;
         } catch (\Exception $e) {
             return response()->json(['error' => 'Error generating QR code: ' . $e->getMessage()], 500);

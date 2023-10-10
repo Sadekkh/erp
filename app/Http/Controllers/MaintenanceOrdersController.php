@@ -99,7 +99,7 @@ class MaintenanceOrdersController extends Controller
     public function print($id)
     {
         $data = MaintenanceOrder::with('vehicle', 'garage', 'driver')->findOrfail($id);
-        $qr = QrCode::size(200)->generate("task: {$data->id}, service: {$data->service_id}");
+        $qr = QrCode::size(200)->generate("maintenanceOrder: {$data->id}");
         return view('maintenance.print', compact('data', 'qr'));
     }
 }

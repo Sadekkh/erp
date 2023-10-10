@@ -16,6 +16,7 @@ use App\Http\Controllers\MaintenanceOrdersController;
 use App\Http\Controllers\MaintenanceTasksController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\RequestItemsController;
+use App\Http\Controllers\StockTransactionsController;
 use App\Http\Controllers\SuppliersController;
 use App\Http\Controllers\VehicleTypesController;
 use Illuminate\Support\Facades\App;
@@ -77,6 +78,7 @@ Route::middleware(['auth'])->group(
         Route::resource('service', ServicesController::class);
         Route::resource('maintenance', MaintenanceOrdersController::class);
         Route::resource('maintenancetask', MaintenanceTasksController::class);
+        Route::resource('stocktransaction', StockTransactionsController::class);
         Route::get('/maintenance-controle', [MaintenanceOrdersController::class, 'car_enter'])->name('maintenance-control');
         Route::get('print-maintenance/{id}', [MaintenanceOrdersController::class, 'print'])->name('print-maintenance');
         Route::post('/maintenance/entry/store', [MaintenanceOrdersController::class, 'entrystore'])->name('maintenance.entry.store');
