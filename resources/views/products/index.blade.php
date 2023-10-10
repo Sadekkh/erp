@@ -43,7 +43,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="recipient-name" class="col-form-label">{{ __('messages.price') }}</label>
-                                        <input type="text" class="form-control" name="price">
+                                        <input type="number" class="form-control" name="price">
                                     </div>
                                 </div>
                             </div>

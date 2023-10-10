@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">{{ __('garage') }}</label>
+                        <label for="recipient-name" class="col-form-label">{{ __('messages.garage') }}</label>
                         <select class="form-control selectpicker" name="garage_id">
                             @foreach ($garage as $d)
                                 <option value="{{ $d->id }}" @if ($data->garage_id == $d->id) selected @endif>{{ $d->{'name' . localePrefix()} }}</option>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">{{ __('product') }}</label>
+                        <label for="recipient-name" class="col-form-label">{{ __('messages.product') }}</label>
                         <select class="form-control selectpicker" name="product_id">
                             @foreach ($product as $d)
                                 <option value="{{ $d->id }}" @if ($data->product_id == $d->id) selected @endif>{{ $d->{'product_name' . localePrefix()} }}</option>
@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">{{ __('supplier') }}</label>
+                        <label for="recipient-name" class="col-form-label">{{ __('messages.supplier') }}</label>
                         <select class="form-control selectpicker" name="supplier_id" data-live-search="true">
                             @foreach ($supplier as $d)
                                 <option data-tokens="{{ $d->{'supplier_name' . localePrefix()} }}" value="{{ $d->id }}" @if ($data->id == $d->id) selected @endif>{{ $d->{'supplier_name' . localePrefix()} }}</option>
@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">{{ __('quantity_requested') }}</label>
+                        <label for="recipient-name" class="col-form-label">{{ __('messages.quantity_requested') }}</label>
                         <input type="number" disabled class="form-control" id="actualNumber" value="{{ $data->quantity_requested }}" min="0" max="{{ $data->quantity_requested }}">
                     </div>
                 </div>
@@ -65,13 +65,13 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">{{ __('price') }}</label>
+                        <label for="recipient-name" class="col-form-label">{{ __('messages.price') }}</label>
                         <input type="number" class="form-control" name="price" value="{{ $data->price }}">
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">{{ __('serial_number') }}</label>
+                        <label for="recipient-name" class="col-form-label">{{ __('messages.serial_number') }}</label>
                         <input type="text" class="form-control" name="serial_num" value="{{ $data->serial_num }}">
                     </div>
                 </div>
@@ -80,13 +80,13 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">{{ __('located_row') }}</label>
+                        <label for="recipient-name" class="col-form-label">{{ __('messages.located_row') }}</label>
                         <input type="number" class="form-control" name="rows">
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">{{ __('located_column') }}</label>
+                        <label for="recipient-name" class="col-form-label">{{ __('messages.located_column') }}</label>
                         <input type="text" class="form-control" name="columns">
                     </div>
                 </div>
@@ -95,13 +95,13 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">{{ __('purchase_date') }}</label>
+                        <label for="recipient-name" class="col-form-label">{{ __('messages.purchase_date') }}</label>
                         <input type="date" class="form-control" name="purchase_date">
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">{{ __('expiry_date') }}</label>
+                        <label for="recipient-name" class="col-form-label">{{ __('messages.expiry_date') }}</label>
                         <input type="date" class="form-control" name="expiry_date">
                     </div>
                 </div>
@@ -110,7 +110,7 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">{{ __('reference') }}</label>
+                        <label for="recipient-name" class="col-form-label">{{ __('messages.reference') }}</label>
                         <input type="text" class="form-control" name="reference">
                     </div>
                 </div>
@@ -121,7 +121,7 @@
 
         <div class="row">
             <div class="col">
-                <button type="submit" class="btn btn-success">{{ __('save') }}</button>
+                <button type="submit" class="btn btn-success">{{ __('messages.save') }}</button>
 
             </div>
         </div>

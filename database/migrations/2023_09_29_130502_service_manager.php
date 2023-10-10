@@ -38,12 +38,14 @@ return new class extends Migration
             $table->id();
             $table->string('model');
             $table->integer('year');
-            $table->integer('number_wheels');
+            $table->string('number_wheels');
             $table->decimal('oil_change', 10, 2);
 
             $table->unsignedBigInteger('vehicle_type_id');
             $table->string('vin')->unique();
             $table->integer('mileage');
+            $table->date('last_check')->nullable();
+            $table->date('next_check')->nullable();
 
             $table->timestamps();
 
@@ -78,7 +80,7 @@ return new class extends Migration
         Schema::create('maintenance_orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('vehicle_id');
-            $table->unsignedBigInteger('diagnostic_emp');
+            $table->unsignedBigInteger('diagnostic_emp')->nullable();
             $table->unsignedBigInteger('driver_id');
             $table->unsignedBigInteger('garage_id');
             $table->enum('status', ['pending', 'in_progress', 'completed'])->default('pending');
@@ -210,7 +212,10 @@ return new class extends Migration
 
             $table->unsignedBigInteger('entity_id');
             $table->string('entity_type');
+            $table->unsignedBigInteger('maintenance_orders_id')->nullable();
+
             $table->timestamps();
+            $table->foreign('maintenance_orders_id')->references('id')->on('maintenance_orders');
         });
     }
 

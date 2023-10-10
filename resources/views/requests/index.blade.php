@@ -4,7 +4,7 @@
 
 @section('tablecontent')
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#customModalTwo">
-        {{ __('add_new') }}
+        {{ __('messages.add_new') }}
     </button>
     <div class="table-container">
 

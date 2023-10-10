@@ -6,7 +6,7 @@
     <div class="table-container">
 
 
-        <div class="t-header">{{ __('garage_management') }}</div>
+        <div class="t-header">{{ __('messages.garage_management') }}</div>
         <div class="table-responsive">
             <table id="copy-print-csv" class="table custom-table">
                 <thead>
@@ -63,7 +63,7 @@
     </div>
     <a href="print/stock">
         <button type="button" class="btn btn-primary">
-            {{ __('print') }}
+            {{ __('messages.print') }}
         </button>
     </a>
 @endsection

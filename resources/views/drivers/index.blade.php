@@ -18,7 +18,7 @@
                             @method('PUT')
                         @endif
                         <div class="modal-header">
-                            <h5 class="modal-title" id="customModalTwoLabel">{{ __('add_driver') }}</h5>
+                            <h5 class="modal-title" id="customModalTwoLabel">{{ __('messages.add_driver') }}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -71,7 +71,7 @@
                 </div>
             </div>
         </div>
-        <div class="t-header">{{ __('messages.garage_management') }}</div>
+        <div class="t-header">{{ __('messages.driver_management') }}</div>
         <div class="table-responsive">
             <table id="copy-print-csv" class="table custom-table">
                 <thead>

@@ -15,13 +15,13 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">{{ __('garage') }}</label>
+                        <label for="recipient-name" class="col-form-label">{{ __('messages.garage') }}</label>
                         <input class="form-control" disabled value="{{ $data->garage->{'name' . localePrefix()} }}">
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">{{ __('product') }}</label>
+                        <label for="recipient-name" class="col-form-label">{{ __('messages.product') }}</label>
                         <input class="form-control" disabled value="{{ $data->product->{'product_name' . localePrefix()} }}">
 
                     </div>
@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">{{ __('supplier') }}</label>
+                        <label for="recipient-name" class="col-form-label">{{ __('messages.supplier') }}</label>
                         <select class="form-control selectpicker" name="supplier_id" data-live-search="true">
                             @foreach ($supplier as $d)
                                 <option data-tokens="{{ $d->{'supplier_name' . localePrefix()} }}" value="{{ $d->id }}" @if ($data->id == $d->id) selected @endif>{{ $d->{'supplier_name' . localePrefix()} }}</option>
@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">{{ __('quantity_requested') }}</label>
+                        <label for="recipient-name" class="col-form-label">{{ __('messages.quantity_requested') }}</label>
                         <input type="number" class="form-control" id="editedNumber" name="quantity_requested" value="{{ $data->quantity_requested }}" min="0" max="{{ $data->quantity_requested }}">
 
                         <input type="number" hidden id="actualNumber" value="{{ $data->quantity_requested }}">
@@ -51,7 +51,7 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">{{ __('quantity_given') }}</label>
+                        <label for="recipient-name" class="col-form-label">{{ __('messages.quantity_given') }}</label>
                         <input class="form-control" disabled value="{{ $data->quantity_given }}">
                     </div>
                 </div>
@@ -60,13 +60,13 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">{{ __('manager_decision') }}</label>
+                        <label for="recipient-name" class="col-form-label">{{ __('messages.manager_decision') }}</label>
                         <input class="form-control" disabled value="{{ $data->manager_decision }}">
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">{{ __('accounts_decision') }}</label>
+                        <label for="recipient-name" class="col-form-label">{{ __('messages.accounts_decision') }}</label>
                         <input class="form-control" disabled value="{{ $data->manager_decision }}">
                     </div>
                 </div>
@@ -76,7 +76,7 @@
 
         <div class="row">
             <div class="col">
-                <button type="submit" class="btn btn-success">{{ __('save') }}</button>
+                <button type="submit" class="btn btn-success">{{ __('messages.save') }}</button>
 
             </div>
         </div>

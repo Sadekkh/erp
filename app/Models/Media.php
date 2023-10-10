@@ -14,7 +14,7 @@ class Media extends Model
         'file_name',
 
         'entity_id',
-        'entity_type',
+        'entity_type', 'maintenance_orders_id',
     ];
     public function product()
     {

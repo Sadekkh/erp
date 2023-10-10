@@ -58,7 +58,7 @@
 </head>
 
 <body>
-    <button class="btn btn-primary" onclick="printInvoices()">Print All Invoices</button>
+    <button class="btn btn-primary" onclick="printInvoices()">{{ __('messages.print') }}</button>
     @foreach ($data as $d)
         @if (!$d->requestItems->isEmpty())
             <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 padding">
@@ -66,7 +66,7 @@
                     <div class="card-header p-4">
                         <a class="pt-2 d-inline-block">{{ _('company_name') }}</a>
                         <div class="float-right">
-                            <h3 class="mb-0">{{ __('products_state') }} </h3>
+                            <h3 class="mb-0">{{ __('messages.products_state') }} </h3>
                             Date: {{ now()->toDateTimeString() }}
                         </div>
                     </div>
@@ -110,11 +110,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-4 col-sm-5">
-                            </div>
-
-                        </div>
+                        
                     </div>
 
                 </div>

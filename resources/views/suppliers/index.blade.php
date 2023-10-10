@@ -4,7 +4,7 @@
 
 @section('tablecontent')
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#customModalTwo">
-        {{ __('add_new') }}
+        {{ __('messages.add_new') }}
     </button>
     <div class="table-container">
 
@@ -18,7 +18,7 @@
                             @method('PUT')
                         @endif
                         <div class="modal-header">
-                            <h5 class="modal-title" id="customModalTwoLabel">{{ __('add_garage') }}</h5>
+                            <h5 class="modal-title" id="customModalTwoLabel">{{ __('messages.add_garage') }}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -28,13 +28,13 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="recipient-name" class="col-form-label">{{ __('name_ar') }}</label>
+                                        <label for="recipient-name" class="col-form-label">{{ __('messages.name_ar') }}</label>
                                         <input type="text" class="form-control" name="supplier_name_ar">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="recipient-name" class="col-form-label">{{ __('name_en') }}</label>
+                                        <label for="recipient-name" class="col-form-label">{{ __('messages.name_en') }}</label>
                                         <input type="text" class="form-control" name="supplier_name_en">
                                     </div>
                                 </div>
@@ -42,13 +42,13 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="recipient-name" class="col-form-label">{{ __('address_ar') }}</label>
+                                        <label for="recipient-name" class="col-form-label">{{ __('messages.address_ar') }}</label>
                                         <input type="text" class="form-control" name="address_ar">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="recipient-name" class="col-form-label">{{ __('address_en') }}</label>
+                                        <label for="recipient-name" class="col-form-label">{{ __('messages.address_en') }}</label>
                                         <input type="text" class="form-control" name="address_en">
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="recipient-name" class="col-form-label">{{ __('phone') }}</label>
+                                        <label for="recipient-name" class="col-form-label">{{ __('messages.phone') }}</label>
                                         <input type="text" class="form-control" name="phone">
                                     </div>
                                 </div>
@@ -69,11 +69,11 @@
                             <div class="modal-footer custom">
 
                                 <div class="left-side">
-                                    <button type="button" class="btn btn-link danger" data-dismiss="modal">{{ __('cancel') }}</button>
+                                    <button type="button" class="btn btn-link danger" data-dismiss="modal">{{ __('messages.cancel') }}</button>
                                 </div>
                                 <div class="divider"></div>
                                 <div class="right-side">
-                                    <button type="submit" class="btn btn-link success">{{ __('save') }}</button>
+                                    <button type="submit" class="btn btn-link success">{{ __('messages.save') }}</button>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                 </div>
             </div>
         </div>
-        <div class="t-header">{{ __('garage_management') }}</div>
+        <div class="t-header">{{ __('messages.garage_management') }}</div>
         <div class="table-responsive">
             <table id="copy-print-csv" class="table custom-table">
                 <thead>
@@ -101,12 +101,12 @@
                             <td>{{ $d->phone }}</td>
                             <td>{{ $d->{'address' . localePrefix()} }}</td>
 
-                            <td><a href="#" class="btn btn-primary btn-sm edit-garage" data-toggle="modal" data-target="#customModalTwo" data-id="{{ $d->id }}">{{ __('edit') }}</a>
+                            <td><a href="#" class="btn btn-primary btn-sm edit-garage" data-toggle="modal" data-target="#customModalTwo" data-id="{{ $d->id }}">{{ __('messages.edit') }}</a>
 
                                 <form action="{{ route('suppliers.destroy', $d->id) }}" method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('{{ __('Are_you_sure_you_want_to_delete_this_item?') }}')">{{ __('delete') }}</button>
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('{{ __('messages.Are_you_sure_you_want_to_delete_this_item?') }}')">{{ __('messages.delete') }}</button>
                                 </form>
                             </td>
                         </tr>
@@ -138,7 +138,7 @@
                     dataType: 'json',
                     success: function(data) {
                         // Populate the modal with garage details
-                        $('#customModalTwoLabel').html('{{ __('edit_garage') }}');
+                        $('#customModalTwoLabel').html('{{ __('messages.edit_garage') }}');
                         $('form').attr('action', '/garages/' + garageId);
                         $('form').append('<input type="hidden" name="_method" value="PUT">');
                         $('input[name="supplier_name_ar"]').val(data.supplier_name_ar);

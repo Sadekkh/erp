@@ -18,9 +18,14 @@ return new class extends Migration {
 
             $table->string('password');
             $table->enum('role', ['Admin', 'Manager', 'Employee'])->default('Employee');
+            $table->unsignedBigInteger('garage_id');
+
             $table->rememberToken();
 
             $table->timestamps();
+
+            $table->foreign('garage_id')->references('id')->on('garage');
+
         });
     }
 

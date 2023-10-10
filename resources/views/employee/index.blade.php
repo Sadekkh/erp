@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="recipient-name" class="col-form-label">{{ __('messages.name_en') }}</label>
+                                        <label for="recipient-name" class="col-form-label">{{ __('messages.service') }}</label>
                                         <select class="form-control selectpicker" id="service_id" name="service_id" data-live-search="true">
                                             @foreach ($service as $d)
                                                 <option data-tokens="{{ $d->{'name' . localePrefix()} }}" value="{{ $d->id }}">{{ $d->{'name' . localePrefix()} }}</option>
@@ -105,7 +105,7 @@
                         <th>{{ __('messages.phone') }}</th>
                         <th>{{ __('messages.cin') }}</th>
 
-                        <th>{{ 'edit' }}</th>
+                        <th>{{ __('messages.edit') }}</th>
 
                     </tr>
                 </thead>
@@ -126,7 +126,7 @@
                                 <form action="{{ route('employee.destroy', $d->id) }}" method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('{{ __('messages.Are_you_sure_you_want_to_delete_this_item?') }}')">{{ __('messages.delete') }}</button>
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('{{ __('messages.Are_you_sure') }}')">{{ __('messages.delete') }}</button>
                                 </form>
                             </td>
                         </tr>

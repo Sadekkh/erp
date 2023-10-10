@@ -15,7 +15,7 @@ class Vehicle extends Model
             ->useLogName('Garage') // Corrected method name for log name
             ->logAll(); // Log all attributes when changes occur
     }
-    protected $fillable = ['model', 'year', 'number_wheels', 'oil_change', 'vehicle_type_id', 'vin', 'mileage'];
+    protected $fillable = ['model', 'year', 'number_wheels', 'oil_change', 'vehicle_type_id', 'vin', 'mileage', 'last_check', 'next_check'];
 
     public function vehicleType()
     {
